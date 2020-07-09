@@ -1,13 +1,14 @@
 <?php
 class App{
     //http://localhost/php_violet/Home
-    protected  $controller="Home";
+    protected $controller="Home";
     protected $action="index";
     protected $params=[];
 
     function __construct()
     {
         $arrs = $this->UrlProcess();
+
         // Xử lý controller
         // Kiểm tra và gán giá trị cho controller
        if(file_exists("./mvc/controller/".$arrs[0].".php")){
@@ -15,6 +16,9 @@ class App{
                 unset($arrs[0]);
         }
         require_once "./mvc/controller/".$this->controller.".php";
+        // khao bao một đối tượng mới
+        $this->controller=new $this->controller;
+
         // Xử lý action
         if(isset($arrs[1])){
             //Kiêm tra ham co tồn tại hai không.Nếu có thì trả về là true không có thì trả về là fale. Home đc lấy từ request_once

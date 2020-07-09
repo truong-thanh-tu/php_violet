@@ -1,11 +1,10 @@
 <?php
-class Home{
+class Home extends Controller {
     function index(){
-        echo "Home - Sayhi";
+        $this->view('Share',['Page'=>'Home']);
     }
-    function ABC($ho,$ten){
-        echo $ho." ".$ten;
-    }
+
+
 }
 
 ?>
